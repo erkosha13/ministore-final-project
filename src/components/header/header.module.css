@@ -4,7 +4,7 @@
   align-items: center;
   margin: 0 auto;
   max-height: 90px;
-  padding: 3px 20px;
+  padding: 3px 30px;
   background-color: #cececb;
   border-radius: 20px;
 }
@@ -16,7 +16,6 @@
   display: flex;
   gap: 20px;
 }
-
 
 .nav a {
   font-family: 'Junge';
@@ -42,23 +41,6 @@
 .search input {
   padding: 8px;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   font-size: 14px;
-}
-
-
-.home {
-  color: white;
-}
-
-.collection {
-  color: white;
-}
-
-.about {
-  color: white;
-}
-
-.contact {
-  color: white;
 }
