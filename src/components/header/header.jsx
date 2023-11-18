@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import PersonPhoto from "../../assets/person.svg";
@@ -5,9 +6,18 @@ import CartPhoto from "../../assets/cart.svg";
 import styles from "./header.module.css";
 
 function Header() {
+  const [isMenuActive, setMenuActive] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuActive(!isMenuActive);
+  };
+
   return (
     <div className={styles.wrapper}>
-      <div className={styles.nav}>
+      <div className={styles.burgerMenu} onClick={toggleMenu}>
+        ☰
+      </div>
+      <div className={`${styles.nav} ${isMenuActive ? "active" : ""}`}>
         <ul>
           <li>
             <Link to="/home" className={styles.home}>

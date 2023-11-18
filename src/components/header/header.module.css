@@ -1,3 +1,7 @@
+body {
+  font-family: 'Junge', sans-serif;
+}
+
 .wrapper {
   display: flex;
   justify-content: space-between;
@@ -18,13 +22,12 @@
 }
 
 .nav a {
-  font-family: 'Junge';
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-size: 16px;
 }
 
-.logo{
+.logo {
   display: flex;
   justify-content: center;
 }
@@ -33,14 +36,45 @@
   max-width: 120px;
 }
 
-.search{
+.search {
   display: flex;
   gap: 20px;
 }
 
 .search input {
+  max-width: 190px;
+  width: 100%;
   padding: 8px;
   border: none;
   border-radius: 30px;
   font-size: 14px;
+}
+
+.burgerMenu{
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .search input{
+    width: 80%;
+  }
+  .nav {
+    display: none; /* Скрываем обычное меню при маленьких экранах */
+  }
+
+  .burgerMenu{
+    display: flex;
+  }
+
+  .nav.active {
+    display: flex; /* Показываем меню при активации */
+    flex-direction: column; /* Столбцовое расположение элементов */
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background-color: #cececb;
+    border-radius: 20px;
+  }
 }
