@@ -1,5 +1,5 @@
 body {
-  font-family: 'Junge', sans-serif;
+  font-family: "Junge", sans-serif;
 }
 
 .wrapper {
@@ -7,8 +7,8 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  max-height: 90px;
-  padding: 3px 30px;
+  height: 50px;
+  padding: 3px 75px;
   background-color: #cececb;
   border-radius: 20px;
 }
@@ -44,26 +44,25 @@ body {
 .search input {
   max-width: 190px;
   width: 100%;
-  padding: 8px;
+  padding: 4px;
   border: none;
   border-radius: 30px;
   font-size: 14px;
 }
 
-.burgerMenu{
+.burgerMenu {
   display: none;
 }
 
 @media only screen and (max-width: 768px) {
-
-  .search input{
+  .search input {
     width: 80%;
   }
   .nav {
     display: none; /* Скрываем обычное меню при маленьких экранах */
   }
 
-  .burgerMenu{
+  .burgerMenu {
     display: flex;
   }
 

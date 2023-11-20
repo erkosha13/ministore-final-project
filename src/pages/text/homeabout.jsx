@@ -1,5 +1,4 @@
-import styles from "./homeaboute.module.css";
-import Api from "../../api/api";
+import styles from './homeaboute.module.css';
 
 function HomeAbout() {
   return (
@@ -15,9 +14,6 @@ function HomeAbout() {
           fabrics and communicate a well thought-out, elegant image of a relaxed
           lifestyle and refinement.
         </div>
-      </div>
-      <div className={styles.product}>
-        <Api />
       </div>
     </div>
   );

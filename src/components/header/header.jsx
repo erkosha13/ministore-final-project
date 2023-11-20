@@ -5,6 +5,9 @@ import PersonPhoto from "../../assets/person.svg";
 import CartPhoto from "../../assets/cart.svg";
 import styles from "./header.module.css";
 
+
+
+
 function Header() {
   const [isMenuActive, setMenuActive] = useState(false);
 
@@ -16,6 +19,9 @@ function Header() {
     <div className={styles.wrapper}>
       <div className={styles.burgerMenu} onClick={toggleMenu}>
         ☰
+      </div>
+      <div className={styles.logo}>
+        <img src={Logo} alt="logo" />
       </div>
       <div className={`${styles.nav} ${isMenuActive ? "active" : ""}`}>
         <ul>
@@ -41,13 +47,9 @@ function Header() {
           </li>
         </ul>
       </div>
-      <div className={styles.logo}>
-        <img src={Logo} alt="logo" />
-      </div>
       <div className={styles.search}>
         <img src={PersonPhoto} alt="" />
         <img src={CartPhoto} alt="" />
-        <input type="text" placeholder="Search..." />
       </div>
     </div>
   );
