@@ -8,7 +8,7 @@ body {
   align-items: center;
   margin: 0 auto;
   height: 50px;
-  padding: 3px 75px;
+  padding: 3px 50px;
   background-color: #cececb;
   border-radius: 20px;
 }
@@ -54,26 +54,67 @@ body {
   display: none;
 }
 
+.burgerMenuList {
+  margin: 20px;
+}
+
+.burgerMenuList ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+}
+
+.burgerMenuList ul li {
+  margin-bottom: 5px;
+}
+
+.burgerMenuList ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 75px;
+}
+
 @media only screen and (max-width: 768px) {
+  .wrapper {
+    padding: 3px 25px;
+  }
   .search input {
     width: 80%;
   }
   .nav {
-    display: none; /* Скрываем обычное меню при маленьких экранах */
+    display: none;
   }
 
   .burgerMenu {
     display: flex;
-  }
-
-  .nav.active {
-    display: flex; /* Показываем меню при активации */
-    flex-direction: column; /* Столбцовое расположение элементов */
-    position: absolute;
-    top: 90px;
-    left: 0;
-    width: 100%;
-    background-color: #cececb;
-    border-radius: 20px;
   }
 }

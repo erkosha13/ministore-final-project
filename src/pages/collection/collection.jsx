@@ -40,7 +40,6 @@ function Collection() {
 
   return (
     <div className={styles.wrapper}>
-      {/* Отобразите уникальные продукты из каждой категории внутри вашего компонента */}
       {uniqueCategoryProducts.map((product) => (
         <div key={product.id} className={styles.categoryItem}>
           <img src={product.category.image} alt={product.category.name} />

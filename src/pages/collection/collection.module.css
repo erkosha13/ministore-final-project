@@ -2,6 +2,12 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.allsCategory{
+  display: flex;
+  margin: 0 auto;
 }
 
 .categoryItem {
