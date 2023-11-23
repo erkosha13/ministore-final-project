@@ -1,18 +1,16 @@
 import Header from "./components/header/header";
+import Footer from './components/footer/footer';
 import Home from "./pages/home/home";
-import HomeAbout from "./pages/text/homeabout";
-import Collection from './pages/collection/collection';
 import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Home />
-      <HomeAbout />
-      <Collection />
-    </Router>
+      <Router>
+        <Header />
+        <Home />
+        <Footer />
+      </Router>
   );
 }
 

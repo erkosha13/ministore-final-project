@@ -1,13 +1,25 @@
 import axios from 'axios';
 
-const fetchProducts = async () => {
+export const getCategories = async () => {
   try {
-    const response = await axios.get('https://api.escuelajs.co/api/v1/products');
+    const response = await axios.get(
+      'https://api.escuelajs.co/api/v1/categories?offset=0&limit=4'
+    );
     return response.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
-    return [];
+    console.error('Error fetching categories:', error);
+    throw error;
   }
-};
+}
 
-export { fetchProducts };
+export const getProducts = async () => {
+  try {
+    const response = await axios.get(
+      'https://api.escuelajs.co/api/v1/products'
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    throw error;
+  }
+}

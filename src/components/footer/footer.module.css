@@ -1,3 +1,25 @@
-.wrapper{
-  font-size: 20;
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #cececb;
+  padding: 3px 50px;
+  height: 80px;
 }
+
+.logos  {
+  display: flex;
+  gap: 15px;
+}
+
+.logos a{
+  color: #000;
+}
+
+
+.logos svg {
+  width: 30px; /* Устанавливаем ширину иконок */
+  height: 30px; /* Устанавливаем высоту иконок */
+}
+
+

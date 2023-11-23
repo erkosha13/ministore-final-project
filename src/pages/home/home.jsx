@@ -5,6 +5,8 @@ import Unmute from "../../assets/unmute.png";
 import Pause from "../../assets/pause.png";
 import Play from "../../assets/play.png";
 import styles from "./home.module.css";
+import HomeAbout from "../text/homeabout";
+import Collection from "../collection/collection";
 
 function Home() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -68,6 +70,8 @@ function Home() {
           </div>
         )}
       </div>
+      <HomeAbout />
+      <Collection />
     </div>
   );
 }
