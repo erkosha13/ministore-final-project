@@ -30,7 +30,7 @@ function Header() {
             <div className={styles.burgerMenuList}>
               <ul>
                 <li>
-                  <Link to="/home" className={styles.link} onClick={closeMenu}>
+                  <Link to="/" className={styles.link} onClick={closeMenu}>
                     Home
                   </Link>
                 </li>
@@ -68,7 +68,7 @@ function Header() {
       <div className={`${styles.nav} ${isMenuActive ? styles.active : ""}`}>
         <ul>
           <li>
-            <Link to="/home" className={styles.link}>
+            <Link to="/" className={styles.link}>
               Home
             </Link>
           </li>

@@ -14,12 +14,25 @@ export const getCategories = async () => {
 
 export const getProducts = async () => {
   try {
+    // Имитация задержки загрузки
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    const response = await axios.get('https://api.escuelajs.co/api/v1/products');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    throw error;
+  }
+};
+
+export const getCatalog = async () => {
+  try {
     const response = await axios.get(
       'https://api.escuelajs.co/api/v1/products'
     );
     return response.data;
   } catch (error) {
-    console.error('Error fetching products:', error);
+    console.error('Error fetching categories:', error);
     throw error;
   }
 }

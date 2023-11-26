@@ -1,6 +1,6 @@
 import styles from "./paginationHome.module.css";
 import { useEffect, useState } from "react";
-import { getProducts } from "../../api/api";
+import { getCatalog } from "../../api/api";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 
 const PaginationHome = () => {
@@ -11,7 +11,7 @@ const PaginationHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const productsData = await getProducts(100);
+        const productsData = await getCatalog(100);
         setProducts(productsData);
         setVisibleProducts(
           productsData.slice(startProductIndex, startProductIndex + 4)

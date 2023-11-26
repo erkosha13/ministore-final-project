@@ -1,18 +1,8 @@
-/* paginationHome.module.css */
-
 .wrapper {
   display: flex;
   justify-content: center;
   width: 1200px;
   margin-bottom: 50px;
-}
-
-.wrapper:active {
-  cursor: grabbing;
-}
-
-.wrapper::-webkit-scrollbar {
-  display: none;
 }
 
 .wrapper > div {
@@ -64,5 +54,3 @@
   width: 150px;
   height: 150px;
 }
-
-
