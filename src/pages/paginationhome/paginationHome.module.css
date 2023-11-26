@@ -1,0 +1,68 @@
+/* paginationHome.module.css */
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  width: 1200px;
+  margin-bottom: 50px;
+}
+
+.wrapper:active {
+  cursor: grabbing;
+}
+
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper > div {
+  max-width: 250px;
+  height: 330px;
+  min-width: 250px;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.wrapper > div:last-child {
+  margin-right: 0;
+}
+
+.wrapper > div img {
+  max-width: 230px;
+  max-height: 230px;
+  object-fit: contain;
+}
+
+.wrapper > div .text {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.wrapper button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.wrapper button:focus {
+  outline: none;
+}
+
+.wrapper button svg {
+  width: 150px;
+  height: 150px;
+}
+
+

@@ -3,8 +3,8 @@
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: 0 auto;
-  margin-bottom: 100px;
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 h2 {
@@ -71,4 +71,10 @@ h2 {
 .sliderWrapper button img {
   max-width: 70px;
   width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .slider {
+    width: 400px;
+  }
 }

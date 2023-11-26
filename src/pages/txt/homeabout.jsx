@@ -1,4 +1,4 @@
-import styles from './homeaboute.module.css';
+import styles from './homeabout.module.css';
 
 function HomeAbout() {
   return (

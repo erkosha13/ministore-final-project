@@ -36,11 +36,11 @@ function Header() {
                 </li>
                 <li>
                   <Link
-                    to="/collection"
+                    to="/catalog"
                     className={styles.link}
                     onClick={closeMenu}
                   >
-                    Collection
+                    Catalog
                   </Link>
                 </li>
                 <li>
@@ -73,8 +73,8 @@ function Header() {
             </Link>
           </li>
           <li>
-            <Link to="/collection" className={styles.link}>
-              Collection
+            <Link to="/catalog" className={styles.link}>
+              Catalog
             </Link>
           </li>
           <li>
