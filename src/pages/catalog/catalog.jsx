@@ -1,4 +1,3 @@
-import React from "react";
 import { Input, Button, Select } from "antd";
 import useCatalogLogic from "./CatalogLogic";
 import styles from "./catalog.module.css";
@@ -8,11 +7,8 @@ const { Search } = Input;
 
 const CatalogPage = () => {
   const {
-    products,
     filteredProducts,
-    sortBy,
     sortOrder,
-    selectedCategory,
     searchValue,
     onSearch,
     sortOptions,

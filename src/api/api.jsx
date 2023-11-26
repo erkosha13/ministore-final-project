@@ -15,7 +15,7 @@ export const getCategories = async () => {
 export const getProducts = async () => {
   try {
     // Имитация задержки загрузки
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 300));
 
     const response = await axios.get('https://api.escuelajs.co/api/v1/products');
     return response.data;

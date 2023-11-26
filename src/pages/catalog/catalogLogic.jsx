@@ -27,7 +27,7 @@ const useCatalogLogic = () => {
     fetchData();
   }, []);
 
-  const onSearch = (value, _e, info) => {
+  const onSearch = (value) => {
     setSearchValue(value);
 
     let filteredBySearch = products;

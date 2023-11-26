@@ -7,7 +7,7 @@
 }
 
 .filter {
-  max-width: 200px;
+  width: 200px;
   height: 150px;
   padding: 15px;
   border: 1px solid #ddd;
@@ -16,12 +16,12 @@
   margin: 50px;
 }
 
-.filter button{
-  width:30px;
+.filter button {
+  width: 30px;
   padding: 0;
 }
 
-h1{
+h1 {
   font-size: 20px;
 }
 
@@ -49,6 +49,11 @@ h1{
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card > div:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card img {
@@ -61,9 +66,8 @@ h1{
   text-align: center;
 }
 
-
-@media only screen and (max-width: 768px){
-  .wrapper{
+@media only screen and (max-width: 768px) {
+  .wrapper {
     justify-content: center;
     flex-wrap: wrap;
   }

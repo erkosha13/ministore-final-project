@@ -1,18 +1,23 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import myVideo from "../../assets/start.mp4";
-import Mute from "../../assets/mute.png";
-import Unmute from "../../assets/unmute.png";
-import Pause from "../../assets/pause.png";
-import Play from "../../assets/play.png";
 import styles from "./home.module.css";
 import HomeAbout from "../txt/homeabout";
 import Collection from "../collection/collection";
-import Products from '../paginationhome/paginationHome';
+import Products from "../paginationhome/paginationHome";
+import { CiPause1, CiPlay1 } from "react-icons/ci";
+import { GoUnmute, GoMute } from "react-icons/go";
 
 function Home() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [showControls, setShowControls] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      setIsMuted(videoRef.current.muted);
+    }
+  }, []);
 
   const togglePlayback = () => {
     if (videoRef.current) {
@@ -28,6 +33,7 @@ function Home() {
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
     }
   };
 
@@ -55,18 +61,10 @@ function Home() {
         {showControls && (
           <div className={`${styles.controls} controls`}>
             <button onClick={togglePlayback}>
-              {isPlaying ? (
-                <img src={Pause} alt="Pause" />
-              ) : (
-                <img src={Play} alt="Play" />
-              )}
+              {isPlaying ? <CiPause1 /> : <CiPlay1 />}
             </button>
             <button onClick={toggleMute}>
-              {videoRef.current && videoRef.current.muted ? (
-                <img src={Mute} alt="Mute" />
-              ) : (
-                <img src={Unmute} alt="Unmute" />
-              )}
+              {isMuted ? <GoMute /> : <GoUnmute />}
             </button>
           </div>
         )}
