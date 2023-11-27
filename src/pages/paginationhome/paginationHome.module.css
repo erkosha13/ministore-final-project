@@ -18,7 +18,7 @@
   color: #575757;
 }
 
-h1 {
+.titleText h1 {
   font-size: 30px;
 }
 
@@ -33,6 +33,7 @@ h1 {
 }
 
 .card > div {
+  background-color: #CECECB;
   max-width: 250px;
   min-width: 250px;
   height: 360px;
@@ -54,9 +55,14 @@ h1 {
   margin-right: 0;
 }
 
+.card > div p{
+  color: #575757;
+}
+
 .wrapper > div img {
   max-width: 230px;
   max-height: 230px;
+  border-radius: 10px;
   object-fit: contain;
 }
 
@@ -79,7 +85,7 @@ h1 {
 }
 
 .wrapper button:hover {
-  background-color: #575757;
+  background-color: #CECECB;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
 }
 
@@ -90,5 +96,5 @@ h1 {
 .wrapper button svg {
   width: 35px;
   height: 35px;
-  color: #c9c9c9;
+  color: #575757;
 }

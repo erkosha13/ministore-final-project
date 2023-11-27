@@ -1,5 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
+import useVideoLogic from "./homeLogic";
 import myVideo from "../../assets/start.mp4";
+import myVideo1 from "../../assets/video2.mp4";
+import myVideo2 from "../../assets/video3.mp4";
+import myVideo3 from "../../assets/video4.mp4";
+import myVideo4 from "../../assets/video5.mp4";
 import styles from "./home.module.css";
 import HomeAbout from "../txt/homeabout";
 import Collection from "../collection/collection";
@@ -7,46 +12,33 @@ import Products from "../paginationhome/paginationHome";
 import { CiPause1, CiPlay1 } from "react-icons/ci";
 import { GoUnmute, GoMute } from "react-icons/go";
 
-function Home() {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [showControls, setShowControls] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const videoRef = useRef(null);
+const Home = () => {
+  const {
+    isPlaying,
+    isMuted,
+    videoRef,
+    togglePlayback,
+    toggleMute,
+  } = useVideoLogic();
 
-  useEffect(() => {
-    if (videoRef.current) {
-      setIsMuted(videoRef.current.muted);
-    }
-  }, []);
+  const [controlsVisible, setControlsVisible] = useState(false);
 
-  const togglePlayback = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
-    }
+  const randomVideo = () => {
+    const videos = [myVideo, myVideo1, myVideo2, myVideo3, myVideo4];
+    const randomIndex = Math.floor(Math.random() * videos.length);
+    return videos[randomIndex];
   };
 
   return (
     <div
       className={styles.wrapper}
-      onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
+      onMouseEnter={() => setControlsVisible(true)}
+      onMouseLeave={() => setControlsVisible(false)}
     >
       <div
         className={styles.videoContainer}
-        onMouseEnter={() => setShowControls(true)}
-        onMouseLeave={() => setShowControls(false)}
+        onMouseEnter={() => setControlsVisible(true)}
+        onMouseLeave={() => setControlsVisible(false)}
       >
         <video
           ref={videoRef}
@@ -55,10 +47,10 @@ function Home() {
           onClick={togglePlayback}
           className={styles.video}
         >
-          <source src={myVideo} type="video/mp4" />
+          <source src={randomVideo()} type="video/mp4" />
           Ваш браузер не поддерживает тег video.
         </video>
-        {showControls && (
+        {controlsVisible && (
           <div className={`${styles.controls} controls`}>
             <button onClick={togglePlayback}>
               {isPlaying ? <CiPause1 /> : <CiPlay1 />}
@@ -74,6 +66,6 @@ function Home() {
       <Products />
     </div>
   );
-}
+};
 
 export default Home;

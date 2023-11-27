@@ -1,5 +1,5 @@
 import { Input, Button, Select } from "antd";
-import useCatalogLogic from "./CatalogLogic";
+import useCatalogLogic from "./catalogLogic";
 import styles from "./catalog.module.css";
 import loadImg from "../../assets/load.gif";
 
@@ -14,7 +14,7 @@ const CatalogPage = () => {
     sortOptions,
     sortProducts,
     filterByCategory,
-    loading, // Добавляем loading из хука
+    loading,
   } = useCatalogLogic();
 
   return (

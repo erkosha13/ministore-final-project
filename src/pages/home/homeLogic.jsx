@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 
 const useVideoLogic = () => {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [showControls, setShowControls] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const videoRef = useRef(null);
 
@@ -32,7 +31,6 @@ const useVideoLogic = () => {
 
   return {
     isPlaying,
-    showControls,
     isMuted,
     videoRef,
     togglePlayback,

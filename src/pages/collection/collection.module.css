@@ -8,11 +8,19 @@
 }
 
 h2 {
+  font-size: 30px;
+  color: #575757;
   text-align: center;
 }
 
 .categoryItem {
   margin: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.categoryItem:hover{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
 }
 
 .categoryItem img {
@@ -26,6 +34,7 @@ h2 {
   margin-top: 10px;
   font-size: 18px;
   font-weight: bold;
+  color: #575757;
   text-align: center;
 }
 

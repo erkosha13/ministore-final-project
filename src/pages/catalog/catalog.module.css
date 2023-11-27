@@ -4,6 +4,7 @@
   margin: 0 auto;
   max-width: 1400px;
   width: 100%;
+  min-height: calc(100vh - 80px);
 }
 
 .filter {
