@@ -2,30 +2,25 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  margin: 0 auto;
   align-items: center;
 }
 
 .videoContainer {
   position: relative;
-  margin: 40px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .video {
-  max-width: 1000px;
   width: 100%;
-  max-height: 568px;
-  height: 100%;
-  object-fit: contain;
-  border: 1px solid #ccc;
-}
-
-.videoContainer video {
-  border-radius: 20px;
+  height: auto;
+  object-fit: cover;
 }
 
 .controls {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -36,8 +31,8 @@
 .controls button {
   background-color: rgba(255, 255, 255, 0.5);
   border: none;
-  border-radius: 50%;
-  padding: 8px 10px;
+  border-radius: 20%;
+  padding: 4px 8px;
   cursor: pointer;
   outline: none;
   margin: 0 10px;

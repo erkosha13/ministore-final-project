@@ -1,18 +1,23 @@
+.header{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
 .wrapper {
+  position: absolute;
+  z-index: 1000;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin: 15px;
+  width: 100%;
   height: 50px;
-  padding: 3px 50px;
-  background-color: #cececb;
-  border-radius: 20px;
+  padding: 10px 0;
+  background-color: #00000044;
 }
 
 .nav ul {
   list-style: none;
-  margin: 0;
   padding: 0;
   display: flex;
   gap: 20px;
@@ -20,7 +25,7 @@
 
 .nav a {
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: 16px;
 }
 
@@ -36,6 +41,7 @@
 .search {
   display: flex;
   gap: 20px;
+  color: white;
 }
 
 .search input {
@@ -68,7 +74,7 @@
 
 .burgerMenuList ul li a {
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
   font-size: 16px;
 }
 
@@ -78,7 +84,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +92,7 @@
 }
 
 .modal {
-  background: white;
+  background: rgb(89, 89, 89);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -102,7 +108,7 @@
 
 @media only screen and (max-width: 768px) {
   .wrapper {
-    padding: 3px 25px;
+    padding: 10px 0;
   }
   .search input {
     width: 80%;
@@ -112,6 +118,7 @@
   }
 
   .burgerMenu {
+    color: #ffffff;
     display: flex;
   }
 }

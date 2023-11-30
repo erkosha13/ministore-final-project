@@ -1,5 +1,7 @@
+@import-normalize;
+
 :root{
-  background-color: #eaeae6;
+  background-color: #000000;
 }
 
 body{

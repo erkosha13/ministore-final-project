@@ -13,13 +13,8 @@ import { CiPause1, CiPlay1 } from "react-icons/ci";
 import { GoUnmute, GoMute } from "react-icons/go";
 
 const Home = () => {
-  const {
-    isPlaying,
-    isMuted,
-    videoRef,
-    togglePlayback,
-    toggleMute,
-  } = useVideoLogic();
+  const { isPlaying, isMuted, videoRef, togglePlayback, toggleMute } =
+    useVideoLogic();
 
   const [controlsVisible, setControlsVisible] = useState(false);
 
