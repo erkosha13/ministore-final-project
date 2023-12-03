@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCatalog } from "../../api/api";
+import { getCatalog } from "../../../api/api";
 
 const usePaginationHome = () => {
   const [products, setProducts] = useState([]);
@@ -32,15 +32,17 @@ const usePaginationHome = () => {
     } else if (screenWidth < 1024) {
       return 3;
     } else {
-      return 4; // Default for larger screens
+      return 5;
     }
   };
 
   const getVisibleProducts = (startIndex, data) => {
     const endIndex = startIndex + getCardsPerRow();
     if (endIndex >= data.length) {
-      // If reaching the end, wrap around to the beginning
-      return [...data.slice(startIndex), ...data.slice(0, endIndex - data.length)];
+      return [
+        ...data.slice(startIndex),
+        ...data.slice(0, endIndex - data.length),
+      ];
     }
     return data.slice(startIndex, endIndex);
   };
@@ -52,7 +54,8 @@ const usePaginationHome = () => {
   };
 
   const handlePrevSlide = () => {
-    const newStartIndex = (startProductIndex - 1 + totalProducts) % totalProducts;
+    const newStartIndex =
+      (startProductIndex - 1 + totalProducts) % totalProducts;
     setVisibleProducts(getVisibleProducts(newStartIndex, products));
     setStartProductIndex(newStartIndex);
   };

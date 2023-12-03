@@ -9,12 +9,11 @@
 
 h2 {
   font-size: 30px;
-  color: #575757;
+  color: #d3d3d3;
   text-align: center;
 }
 
 .categoryItem {
-  margin: 20px;
   transition: box-shadow 0.3s ease;
 }
 
@@ -24,8 +23,9 @@ h2 {
 }
 
 .categoryItem img {
-  max-width: 250px;
-  height: 250px;
+  max-width: 210px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 8px;
 }
@@ -34,56 +34,19 @@ h2 {
   margin-top: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: #575757;
+  color: #d3d3d3;
   text-align: center;
 }
 
 .cards {
   display: flex;
   justify-content: center;
+  gap: 30px;
   flex-wrap: wrap;
-}
-
-.sliderWrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-  gap: 15px;
-}
-
-.slider {
-  display: flex;
-  justify-content: center;
-  width: 1035px;
-  gap: 15px;
-}
-
-.slider img {
-  max-width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.sliderWrapper button {
-  background-color: transparent;
-  border: none;
   cursor: pointer;
-  padding: 0;
 }
 
-.sliderWrapper button:disabled {
-  cursor: not-allowed;
-}
-
-.sliderWrapper button img {
-  max-width: 70px;
-  width: 100%;
-}
 
 @media only screen and (max-width: 768px) {
-  .slider {
-    width: 400px;
-  }
+
 }

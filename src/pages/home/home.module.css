@@ -15,21 +15,22 @@
 .video {
   width: 100%;
   height: auto;
+  border: none;
   object-fit: cover;
 }
 
 .controls {
   position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 5%;
+  right: 6%;
+  transform: translate(50%, 50%);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .controls button {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #d3d3d37c;
   border: none;
   border-radius: 20%;
   padding: 4px 8px;
@@ -41,4 +42,24 @@
 .controls svg {
   width: 30px;
   height: 30px;
+}
+
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #d3d3d37c;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+p{
+  color: #d3d3d37c;
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Input, Button, Select, Modal } from "antd";
 import useCatalogLogic from "./catalogLogic";
 import styles from "./catalog.module.css";
-import loadImg from "../../assets/load.gif";
+import loadImg from "../../assets/gif/load.gif";
 
 
 const { Search } = Input;

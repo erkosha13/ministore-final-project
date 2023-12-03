@@ -13,7 +13,7 @@ const PaginationHome = () => {
     <div>
       <div className={styles.wrapper}>
         <div className={styles.titleText}>
-          <h1>All Collection</h1>
+          <h1>Top Products</h1>
           <div className={styles.buttons}>
             <button onClick={handlePrevSlide}>
               <AiOutlineLeftCircle  />

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import styles from "./collection.module.css";
-import { getCategories } from "../../api/api";
+import styles from "./homecatalog.module.css";
+import { getCategories } from "../../../api/api";
 
-const Collection = () => {
+const HomeCatalog = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Collection = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h2>Categories</h2>
+      <h2>Catalog</h2>
       <div className={styles.cards}>
         {categories.map(({ id, image, name }) => (
           <div key={id} className={styles.categoryItem}>
@@ -32,4 +32,4 @@ const Collection = () => {
   );
 };
 
-export default Collection;
+export default HomeCatalog;

@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  background-color: #cececb;
+  background-color: #ffffff69;
   padding: 3px 50px;
   height: 80px;
 }
@@ -12,13 +12,17 @@
   align-items: center;
 }
 
+p{
+  color: #d3d3d3;
+}
+
 .logos {
   display: flex;
   gap: 15px;
 }
 
 .logos a {
-  color: #000;
+  color: #d3d3d3;
 }
 
 .logos svg {
