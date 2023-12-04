@@ -26,13 +26,14 @@
   max-width: 1200px;
   width: 100%;
   margin: 20px 0 70px 0;
-  gap: 30px;
+  gap: 20px;
 }
 
 .card > div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
+  gap: 20px;
   border-radius: 8px;
   cursor: pointer;
 }

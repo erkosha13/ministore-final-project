@@ -5,6 +5,7 @@ const usePaginationHome = () => {
   const [products, setProducts] = useState([]);
   const [visibleProducts, setVisibleProducts] = useState([]);
   const [startProductIndex, setStartProductIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,6 +15,8 @@ const usePaginationHome = () => {
         setVisibleProducts(getVisibleProducts(startProductIndex, productsData));
       } catch (error) {
         console.error("Error:", error);
+      }finally {
+        setLoading(false);
       }
     };
 
@@ -64,6 +67,7 @@ const usePaginationHome = () => {
     visibleProducts,
     handleNextSlide,
     handlePrevSlide,
+    loading,
   };
 };
 
