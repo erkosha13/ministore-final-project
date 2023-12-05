@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./homecatalog.module.css";
 import { getCategories } from "../../../api/api";
 import SkeletonCatalog from "./skeletoncatalog";
@@ -32,10 +33,10 @@ const HomeCatalog = () => {
         ) : (
           <div className={styles.cards}>
             {categories.map(({ id, image, name }) => (
-              <div key={id} className={styles.categoryItem}>
+                <Link key={id} to={`/catalog?category=${id}`} className={styles.categoryItem}>
                 <img src={image} alt={name} />
                 <p>{name}</p>
-              </div>
+              </Link>
             ))}
           </div>
         )}

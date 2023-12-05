@@ -67,11 +67,9 @@
   cursor: not-allowed;
 }
 
-/* .info{
-  display: flex;
-} */
 
-.info button{
+
+.cards button{
   background-color: #d3d3d37c;
   padding: 7px 60px;
   border-radius: none;

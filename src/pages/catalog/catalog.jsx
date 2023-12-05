@@ -1,123 +1,95 @@
-import { useState } from "react";
-import { Input, Button, Select, Modal } from "antd";
-import useCatalogLogic from "./catalogLogic";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getProducts } from "../../api/api";
+import { Input } from "antd";
 import styles from "./catalog.module.css";
-import loadImg from "../../assets/gif/load.gif";
-
+import Skeleton from "./skeleton";
 
 const { Search } = Input;
+const onSearch = (value, _e, info) => console.log(info?.source, value);
 
-const CatalogPage = () => {
-  const {
-    filteredProducts,
-    sortOrder,
-    searchValue,
-    onSearch,
-    sortOptions,
-    sortProducts,
-    filterByCategory,
-    loading,
-  } = useCatalogLogic();
+function Catalog() {
+  const [products, setProducts] = useState([]);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const categoryId = new URLSearchParams(location.search).get("category");
+  const [selectedCategory, setSelectedCategory] = useState(
+    categoryId ? parseInt(categoryId, 10) : 1
+  );
+  const [loading, setLoading] = useState(true);
 
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const categories = [
+    "Сlothes",
+    "Electronics",
+    "Furniture",
+    "Shoes",
+    "Miscellaneous",
+  ];
 
-  const showModal = (product) => {
-    setSelectedProduct(product);
-    setIsModalOpen(true);
-  };
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const categoryIdToFetch = selectedCategory || 1;
+        setProducts(await getProducts(categoryIdToFetch));
+      } catch (error) {
+        console.error("Ошибка:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const handleOk = () => {
-    setSelectedProduct(null);
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setSelectedProduct(null);
-    setIsModalOpen(false);
-  };
+    fetchProducts();
+    navigate(`/catalog?category=${selectedCategory}`);
+  }, [selectedCategory, navigate]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.filter}>
-        <div className={styles.title}>
-          <h1>Filter</h1>
-        </div>
         <Search
-          placeholder="Search"
+          className={styles.search}
+          placeholder="input search text"
           onSearch={onSearch}
-          onChange={(e) => onSearch(e.target.value)}
-          value={searchValue}
-          style={{
-            width: 200,
-          }}
+          style={{ width: 200 }}
         />
-        <Select
-          defaultValue={sortOptions[0].value}
-          style={{ width: 170 }}
-          onChange={(value) => {
-            if (value === "all") {
-              filterByCategory(null);
-            } else {
-              filterByCategory(value);
-            }
-          }}
-        >
-          {sortOptions.map((option) => (
-            <Select.Option key={option.value} value={option.value}>
-              {option.label}
-            </Select.Option>
-          ))}
-        </Select>
-        <Button onClick={() => sortProducts("price")}>
-          {sortOrder === "asc" ? "↑" : "↓"}
-        </Button>
+        <div className={styles.sort}>
+          <ul>
+            {categories.map((value, i) => (
+              <li
+                key={i}
+                onClick={() => setSelectedCategory(i + 1)}
+                className={
+                  i + 1 === selectedCategory || (i === 0 && !selectedCategory)
+                    ? styles.selectedCategory
+                    : ""
+                }
+              >
+                {value}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className={styles.card}>
+      <div className={styles.catalog}>
         {loading ? (
-          <img src={loadImg} alt="loading..." />
-        ) : (
-          filteredProducts.map((product) => (
-            <div
-              key={product.id}
-              onClick={() => showModal(product)}
-              className={styles.productCard}
-            >
-              <img src={product.images[0]} alt={product.title} />
-              <div className={styles.text}>
-                <p>{product.title}</p>
-                <p>Price ${product.price}</p>
-                <p>Category: {product.category.name}</p>
-              </div>
-            </div>
+          [...new Array(8)].map((_, index) => (
+            <Skeleton key={index} className={styles.card} />
           ))
-        )}
-      </div>
-      <Modal
-        title={selectedProduct ? selectedProduct.title : ""}
-        visible={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={null}
-      >
-        {selectedProduct && (
-          <div className={styles.modal}>
-            <div className={styles.modalImg}>
-              <img
-                src={selectedProduct.images[0]}
-                alt={selectedProduct.title}
-              />
-              <p>{`Title: ${selectedProduct.title}`}</p>
-              <p>{`Price: $${selectedProduct.price}`}</p>
-            </div>
-            <div className={styles.modalDescription}>
-              <p>{selectedProduct.description}</p>
-            </div>
+        ) : (
+          <div className={styles.cards}>
+            {products.map((product) => (
+              <div key={product.id} className={styles.card}>
+                <img src={product.images[0]} />
+                <div className={styles.text}>
+                  <p>{product.title}</p>
+                  <p>${product.price}</p>
+                </div>
+              </div>
+            ))}
           </div>
         )}
-      </Modal>
+      </div>
     </div>
   );
-};
+}
 
-export default CatalogPage;
+export default Catalog;
