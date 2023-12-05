@@ -38,7 +38,10 @@ function TopProduct() {
       <div className={styles.titleText}>
         <h1>Top Products</h1>
         <div className={styles.buttons}>
-          <button onClick={handlePrevPage}>
+          <button
+            onClick={handlePrevPage}
+            className={currentPage === 1 ? styles.inactiveButton : ""}
+          >
             <AiOutlineLeftCircle />
           </button>
           <button onClick={handleNextPage}>

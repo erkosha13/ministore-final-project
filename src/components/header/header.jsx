@@ -55,7 +55,7 @@ function Header() {
                   </li>
                   <li>
                     <Link
-                      to="/contact"
+                      to="/contacts"
                       className={styles.link}
                       onClick={closeMenu}
                     >
@@ -88,8 +88,8 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/contact" className={styles.link}>
-                Contact
+              <Link to="/contacts" className={styles.link}>
+                Contacts
               </Link>
             </li>
           </ul>

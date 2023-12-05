@@ -12,9 +12,11 @@
   width: 100%;
 }
 
-.video {
+video {
   width: 100%;
-  height: auto;
+  max-height: 1000px;
+  min-height: 1000px;
+  height: 100%;
   border: none;
   object-fit: cover;
 }
@@ -30,7 +32,10 @@
 }
 
 .controls button {
-  background-color: #d3d3d37c;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+  background-color: #5858587c;
   border: none;
   border-radius: 20%;
   padding: 4px 8px;
@@ -42,8 +47,36 @@
 .controls svg {
   width: 30px;
   height: 30px;
+  color: #d3d3d3de;
 }
 
+.carousel {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 97%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel button {
+  background-color: transparent;
+  font-size: 50px;
+  border: none;
+  border-radius: 20%;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
+  margin: 0 10px;
+}
+
+.inactive {
+  color: #d3d3d3de;
+}
+
+.active {
+  color: #5858587c;
+}
 
 .text {
   position: absolute;
@@ -54,12 +87,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #d3d3d37c;
+  color: #d3d3d338;
   max-width: 600px;
   width: 100%;
   text-align: center;
-}
-
-p{
-  color: #d3d3d37c;
 }

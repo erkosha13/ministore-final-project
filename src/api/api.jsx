@@ -26,19 +26,6 @@ export const getProducts = async () => {
   }
 };
 
-export const getCatalog = async () => {
-  try {
-    const response = await axios.get(
-      "https://api.escuelajs.co/api/v1/products?offset=0&limit=18"
-    );
-    return response.data;
-  } catch (error) {
-    console.error("Error fetching categories:", error);
-    throw error;
-  }
-};
-
-
 export const getPagination = async (offset) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 300));

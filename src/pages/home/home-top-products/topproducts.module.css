@@ -61,3 +61,8 @@
   height: 35px;
   color: #575757;
 }
+
+.inactiveButton {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
