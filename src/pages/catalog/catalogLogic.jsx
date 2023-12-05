@@ -84,7 +84,6 @@ const useCatalogLogic = () => {
         return order * (a.price - b.price);
       });
     } else if (method === "category") {
-      // Добавляем логику для сортировки по категории
       sortedProducts.sort((a, b) => {
         const order = newSortOrder === "asc" ? 1 : -1;
         return order * a.category.name.localeCompare(b.category.name);

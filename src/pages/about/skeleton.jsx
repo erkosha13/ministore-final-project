@@ -8,8 +8,8 @@ const Skeleton = ({ className }) => (
     width={220}
     height={270}
     viewBox="0 0 250 280"
-    backgroundColor="#f3f3f3"
-    foregroundColor="#ecebeb"
+    backgroundColor="rgba(255, 255, 255, 0.7)"
+    foregroundColor="rgba(255, 255, 255, 0.7)"
 
   >
     <rect x="0" y="205" rx="8" ry="8" width="247" height="67" />

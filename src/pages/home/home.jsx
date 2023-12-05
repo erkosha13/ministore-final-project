@@ -6,9 +6,9 @@ import myVideo2 from "../../assets/video/video3.mp4";
 import myVideo3 from "../../assets/video/video4.mp4";
 import myVideo4 from "../../assets/video/video5.mp4";
 import styles from "./home.module.css";
+import TopProduct from './home-top-products';
 import HomeAbout from "./homeabout/homeabout";
 import HomeCatalog from "./home-catalog/homecatalog";
-import Products from "./paginationhome/paginationHome";
 import { CiPause1, CiPlay1 } from "react-icons/ci";
 import { GoUnmute, GoMute } from "react-icons/go";
 
@@ -69,7 +69,7 @@ const Home = () => {
       </div>
       <HomeCatalog />
       <HomeAbout />
-      <Products />
+      <TopProduct />
     </div>
   );
 };

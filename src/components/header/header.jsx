@@ -59,7 +59,7 @@ function Header() {
                       className={styles.link}
                       onClick={closeMenu}
                     >
-                      Contact
+                      Contacts
                     </Link>
                   </li>
                 </ul>
@@ -95,8 +95,20 @@ function Header() {
           </ul>
         </div>
         <div className={styles.search}>
-          <IoPerson />
-          <RiShoppingCartLine />
+          <ul>
+            <li>
+              <Link to="/profile" className={styles.link}>
+                {" "}
+                <IoPerson />
+              </Link>
+            </li>
+            <li>
+              <Link to="cart" className={styles.link}>
+                {" "}
+                <RiShoppingCartLine />{" "}
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
