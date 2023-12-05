@@ -1,0 +1,10 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 95px;
+  min-height: calc(72vh - 80px);
+  background-color: aliceblue;
+}
+
+

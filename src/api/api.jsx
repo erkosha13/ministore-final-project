@@ -12,16 +12,16 @@ export const getCategories = async () => {
   }
 };
 
-export const getProducts = async () => {
+export const getProducts = async (categoryId) => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     const response = await axios.get(
-      "https://api.escuelajs.co/api/v1/products"
+      `https://api.escuelajs.co/api/v1/categories/${categoryId}/products`
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error("Error:", error);
     throw error;
   }
 };

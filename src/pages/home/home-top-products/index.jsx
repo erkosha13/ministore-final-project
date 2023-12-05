@@ -61,9 +61,12 @@ function TopProduct() {
                 <div className={styles.cardsImg}>
                   <img src={product.images[0]} alt={product.title}></img>
                 </div>
-                <div className={styles.text}>
-                  <p>{product.title}</p>
-                  <p>${product.price}</p>
+                <div className={styles.info}>
+                  <div className={styles.text}>
+                    <p>{product.title}</p>
+                    <p>${product.price}</p>
+                  </div>
+                  <button>Add to Bag</button>
                 </div>
               </div>
             ))}

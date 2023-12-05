@@ -10,20 +10,23 @@ const onSearch = (value, _e, info) => console.log(info?.source, value);
 function About() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState(1);
+
+  const categories = ['Сlothes', 'Electronics', 'Furniture', 'Shoes', 'Miscellaneous'];
 
   useEffect(() => {
-    const Products = async () => {
+    const fetchProducts = async () => {
       try {
-        setProducts(await getProducts());
+        setProducts(await getProducts(selectedCategory));
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Ошибка:", error);
       } finally {
         setLoading(false);
       }
     };
 
-    Products();
-  }, []);
+    fetchProducts();
+  }, [selectedCategory]);
 
   return (
     <div className={styles.wrapper}>
@@ -36,12 +39,17 @@ function About() {
           }}
         />
         <div className={styles.sort}>
-          <p>All</p>
-          <p>Сlothes</p>
-          <p>Electronics</p>
-          <p>Furniture</p>
-          <p>Shoes</p>
-          <p>Miscellaneous</p>
+          <ul>
+            {categories.map((value, i) => (
+              <li
+                key={i}
+                onClick={() => setSelectedCategory(i + 1)}
+                className={i + 1 === selectedCategory ? styles.selectedCategory : ""}
+              >
+                {value}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className={styles.catalog}>

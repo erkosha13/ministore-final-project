@@ -97,7 +97,7 @@ function Header() {
         <div className={styles.search}>
           <ul>
             <li>
-              <Link to="/profile" className={styles.link}>
+              <Link to="/login" className={styles.link}>
                 {" "}
                 <IoPerson />
               </Link>
