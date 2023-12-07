@@ -28,7 +28,6 @@ export const getProducts = async (categoryId) => {
 
 export const getPagination = async (offset) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 300));
     const response = await axios.get(
       `https://api.escuelajs.co/api/v1/products?offset=${offset}&limit=5`
     );
@@ -36,5 +35,17 @@ export const getPagination = async (offset) => {
   } catch (error) {
     console.log("Error:", error);
     throw error;
+  }
+};
+
+export const getSearch = async (categoryId) => {
+  try{
+    const response = await axios.get(
+      `https://api.escuelajs.co/api/v1/products/?title=${categoryId}`
+    );
+    return response.data;
+  }catch (error){
+    console.log('Error', error);
+  throw error;
   }
 };

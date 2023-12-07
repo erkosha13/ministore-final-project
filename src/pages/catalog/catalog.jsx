@@ -47,7 +47,7 @@ function Catalog() {
       <div className={styles.filter}>
         <Search
           className={styles.search}
-          placeholder="input search text"
+          placeholder="search "
           onSearch={onSearch}
           style={{ width: 200 }}
         />
