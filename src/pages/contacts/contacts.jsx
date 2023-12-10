@@ -27,7 +27,7 @@ function Contacts() {
               </h1>
             </div>
             <div className={styles.textCard}>
-              <p>4400 4302 4494</p>
+              <p>4400 4302  4494 2535</p>
             </div>
           </div>
         </div>

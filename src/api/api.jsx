@@ -38,14 +38,14 @@ export const getPagination = async (offset) => {
   }
 };
 
-export const getSearch = async (categoryId) => {
-  try{
+export const getSearch = async (searchTerm) => {
+  try {
     const response = await axios.get(
-      `https://api.escuelajs.co/api/v1/products/?title=${categoryId}`
+      `https://api.escuelajs.co/api/v1/products/?title=${searchTerm}`
     );
     return response.data;
-  }catch (error){
-    console.log('Error', error);
-  throw error;
+  } catch (error) {
+    console.error('Ошибка', error);
+    throw error;
   }
 };

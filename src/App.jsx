@@ -8,6 +8,7 @@ import About from "./pages/about/about";
 import Contacts from "./pages/contacts/contacts";
 import Login from "./pages/login/login";
 import NotFound from "./components/notfound";
+import Cart from './pages/cart/cart';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/contacts/:productId" element={<Contacts />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
