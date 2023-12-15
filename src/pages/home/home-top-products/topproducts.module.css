@@ -43,6 +43,7 @@
 }
 
 .wrapper button {
+  display: flex;
   background: transparent;
   border-radius: 30px;
   border: none;

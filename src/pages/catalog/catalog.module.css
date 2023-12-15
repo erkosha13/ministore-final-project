@@ -20,13 +20,13 @@
   background-color: #d3d3d32d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
-  width: 1100px;
+  max-width: 1100px;
+  width: 100%;
 }
 
 .sort {
   display: flex;
   color: #d3d3d3;
-  width: 100%;
   gap: 20px;
 }
 
@@ -41,17 +41,23 @@
   background-color: #a9a9a9;
 }
 
+.sort li:active {
+  background-color: #a9a9a9;
+}
+
 .catalog {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+  min-height: 350px;
   max-width: 1100px;
   width: 100%;
   padding: 50px;
   background-color: #d3d3d32d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
+  position: relative;
 }
 
 .cards {
@@ -59,6 +65,8 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+  position: relative;
+  width: 100%;
 }
 
 .card {
@@ -67,7 +75,7 @@
   flex-direction: column;
   max-width: 250px;
   min-width: 250px;
-  height: 280px;
+  height: 350px;
   padding: 10px;
   box-sizing: border-box;
   border-radius: 8px;
@@ -75,11 +83,8 @@
   transition: box-shadow 0.3s ease;
 }
 
-.cards > div:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .cards img {
+  border-radius: 8px;
   max-width: 230px;
   max-height: 230px;
   min-width: 230px;
@@ -91,6 +96,7 @@
 .text {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: #d3d3d3;
   text-align: left;
 }
@@ -111,6 +117,34 @@
   max-width: 230px;
   max-height: 230px;
   object-fit: contain;
+}
+
+.cards button{
+  background-color: #d3d3d37c;
+  padding: 7px 60px;
+  border-radius: 30px;
+  border: none;
+  padding: 5px 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #d3d3d3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
+}
+
+.load {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.load button {
+  padding: 10px 30px;
+  margin-top: 20px;
 }
 
 @media only screen and (max-width: 768px) {

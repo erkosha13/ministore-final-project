@@ -14,7 +14,7 @@ export const getCategories = async () => {
 
 export const getProducts = async (categoryId) => {
   try {
-    await new Promise((resolve) => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 200));
 
     const response = await axios.get(
       `https://api.escuelajs.co/api/v1/categories/${categoryId}/products`

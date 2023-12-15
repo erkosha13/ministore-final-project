@@ -33,6 +33,10 @@ function TopProduct() {
     setCurrentPage(currentPage + 1);
   };
 
+  const handleClickAddToBag = (productId) => {
+    console.log(`Product id : ${productId}`);
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.titleText}>
@@ -66,7 +70,9 @@ function TopProduct() {
                     <p>{product.title}</p>
                     <p>${product.price}</p>
                   </div>
-                  <button>Add to Bag</button>
+                  <button onClick={() => handleClickAddToBag(product.id)}>
+                    Add to Bag
+                  </button>
                 </div>
               </div>
             ))}

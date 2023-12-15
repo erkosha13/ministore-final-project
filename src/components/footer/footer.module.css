@@ -3,6 +3,7 @@
   background-color: #ffffff69;
   padding: 3px 50px;
   height: 80px;
+  
 }
 
 .content {
@@ -28,4 +29,32 @@ p {
 .logos svg {
   width: 30px;
   height: 30px;
+}
+
+.buttonUp {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+}
+
+.buttonUp button svg {
+  width: 35px;
+  height: 35px;
+  color: #575757;
+}
+
+button {
+  display: flex;
+  background-color: transparent;
+  border-radius: 30px;
+  border: none;
+  padding: 7px 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #d3d3d3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
 }

@@ -1,7 +1,110 @@
-.wrapper{
+.wrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-top: 90px;
+  padding: 95px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  min-height: calc(70vh - 80px);
+}
 
+.title {
+  text-align: start;
+}
+
+.cardsCart {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  flex-direction: column;
+}
+
+.cardCart {
+  display: flex;
+  flex-direction: column;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.quantityCart {
+  display: flex;
+}
+
+.cartItem img {
+  min-width: 230px;
+  max-width: 230px;
+  min-height: 230px;
+  max-height: 230px;
+}
+
+.textCart {
+  display: flex;
+  justify-content: space-between;
+  max-width: 270px;
+  width: 100%;
+}
+
+
+.quantityScore {
+  font-size: 30px;
+  color: #575757;
+  margin: 0 10px;
+}
+
+.deleteItem button svg {
+  width: 25px;
+  height: 25px;
+  color: #575757;
+}
+
+.quantityCart button svg {
+  width: 25px;
+  height: 25px;
+  color: #575757;
+}
+
+button {
+  display: flex;
+  background-color: transparent;
+  border-radius: 30px;
+  border: none;
+  padding: 7px 7px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #d3d3d3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
+}
+
+.result{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 1075px;
+  width: 100%;
+}
+
+.buttonResult button{
+  background-color: #575757;
+  margin-top: 10px;
+}
+
+.buttonResult button:hover {
+  background-color: #d3d3d3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
+}
+
+.total,
+.buttonResult{
+  display: flex;
+  justify-content: end;
 }

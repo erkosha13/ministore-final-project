@@ -3,7 +3,6 @@ import { GiPauseButton, GiPlayButton } from "react-icons/gi";
 import { FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 import styles from "./home.module.css";
 
-
 import HomeCatalog from "./home-catalog/homecatalog";
 import HomeAbout from "./homeabout/homeabout";
 import TopProduct from "./home-top-products";
@@ -17,7 +16,7 @@ const videos = [myVideo3, myVideo1, myVideo2, myVideo, myVideo4];
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true); // Установите isPlaying в true для автоматического воспроизведения первого видео
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const videoRefs = useRef(
     Array.from({ length: videos.length }, () => React.createRef())

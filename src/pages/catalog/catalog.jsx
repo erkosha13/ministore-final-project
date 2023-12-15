@@ -1,29 +1,34 @@
-import { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getProducts, getSearch } from '../../api/api';
-import { Input } from 'antd';
-import styles from './catalog.module.css';
-import Skeleton from './skeleton';
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getProducts, getSearch } from "../../api/api";
+import { Input } from "antd";
+import styles from "./catalog.module.css";
+import Skeleton from "./skeleton";
 
 const { Search } = Input;
 
 function Catalog() {
   const [products, setProducts] = useState([]);
+  const [visible, setVisible] = useState(8);
   const location = useLocation();
   const navigate = useNavigate();
-  const categoryId = new URLSearchParams(location.search).get('category');
+  const categoryId = new URLSearchParams(location.search).get("category");
   const [selectedCategory, setSelectedCategory] = useState(
     categoryId ? parseInt(categoryId, 10) : 1
   );
   const [loading, setLoading] = useState(true);
 
   const categories = [
-    'Clothes',
-    'Electronics',
-    'Furniture',
-    'Shoes',
-    'Miscellaneous',
+    "Clothes",
+    "Electronics",
+    "Furniture",
+    "Shoes",
+    "Miscellaneous",
   ];
+
+  const showMoreItems = () => {
+    setVisible((prevValue) => prevValue + 4);
+  };
 
   const onSearch = async (value) => {
     try {
@@ -31,10 +36,21 @@ function Catalog() {
       const searchResults = await getSearch(value);
       setProducts(searchResults);
     } catch (error) {
-      console.error('Ошибка при выполнении поиска:', error);
+      console.error("Ошибка при выполнении поиска:", error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const addToLocalStorage = (product) => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...storedCart, product];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const handleClickAddToBag = (product) => {
+    console.log(`Product id : ${product.id}`);
+    addToLocalStorage(product);
   };
 
   useEffect(() => {
@@ -46,11 +62,11 @@ function Catalog() {
           const categoryIdToFetch = selectedCategory;
           setProducts(await getProducts(categoryIdToFetch));
         } else {
-          const searchTerm = new URLSearchParams(location.search).get('title');
+          const searchTerm = new URLSearchParams(location.search).get("title");
           setProducts(await getSearch(searchTerm));
         }
       } catch (error) {
-        console.error('Ошибка:', error);
+        console.error("Ошибка:", error);
       } finally {
         setLoading(false);
       }
@@ -82,7 +98,7 @@ function Catalog() {
                 className={
                   i + 1 === selectedCategory || (i === 0 && !selectedCategory)
                     ? styles.selectedCategory
-                    : ''
+                    : ""
                 }
               >
                 {value}
@@ -98,15 +114,21 @@ function Catalog() {
           ))
         ) : (
           <div className={styles.cards}>
-            {products.map((product) => (
+            {products.slice(0, visible).map((product) => (
               <div key={product.id} className={styles.card}>
                 <img src={product.images[0]} alt={product.title} />
                 <div className={styles.text}>
                   <p>{product.title}</p>
-                  <p>${product.price}</p>
+                  <p className={styles.price}>${product.price}</p>
                 </div>
+                <button onClick={() => handleClickAddToBag(product)}>
+                  Add to Bag
+                </button>
               </div>
             ))}
+            <div className={styles.load}>
+              <button onClick={showMoreItems}>Load more</button>
+            </div>
           </div>
         )}
       </div>
