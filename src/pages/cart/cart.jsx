@@ -4,6 +4,7 @@ import {
   AiOutlinePlusCircle,
   AiOutlineMinusCircle,
 } from "react-icons/ai";
+import emptyGif from "../../assets/gif/empty.gif";
 import styles from "./cart.module.css";
 
 const Cart = () => {
@@ -61,7 +62,10 @@ const Cart = () => {
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Your Cart</h2>
       {cart.length === 0 ? (
-        <p className={styles.emptyMessage}>Your cart is empty</p>
+        <div className={styles.empty}>
+          <p className={styles.emptyMessage}>Your cart is empty</p>
+          <img src={emptyGif} alt="Not Found"  className={styles.gif}/>
+        </div>
       ) : (
         <div className={styles.cardsCart}>
           <ul className={styles.cardCart}>

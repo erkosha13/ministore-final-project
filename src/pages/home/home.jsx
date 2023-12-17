@@ -14,16 +14,26 @@ import myVideo4 from "../../assets/video/video5.mp4";
 
 const videos = [myVideo3, myVideo1, myVideo2, myVideo, myVideo4];
 
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+};
+
+const shuffledVideos = [...videos];
+shuffleArray(shuffledVideos);
+
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
   const videoRefs = useRef(
-    Array.from({ length: videos.length }, () => React.createRef())
+    Array(shuffledVideos.length).fill().map(() => React.createRef())
   );
 
   const handleVideoEnd = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % videos.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % shuffledVideos.length);
   };
 
   const handleTogglePlay = () => {
@@ -67,7 +77,7 @@ function Home() {
         <div className={styles.videoContainer}>
           <video
             ref={videoRefs.current[currentIndex]}
-            src={videos[currentIndex]}
+            src={shuffledVideos[currentIndex]}
             autoPlay={isPlaying}
             controls={false}
             muted
@@ -93,7 +103,7 @@ function Home() {
             <h1>2023</h1>
           </div>
           <div className={styles.carousel}>
-            {videos.map((video, index) => (
+            {shuffledVideos.map((video, index) => (
               <button
                 key={index}
                 onClick={() => handleSelectVideo(index)}

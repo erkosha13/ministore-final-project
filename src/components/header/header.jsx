@@ -25,9 +25,6 @@ function Header() {
         {isMenuActive && (
           <div className={styles.modalOverlay} onClick={closeMenu}>
             <div className={styles.modal}>
-              <div className={styles.closeButton} onClick={closeMenu}>
-                &times;
-              </div>
               <div className={styles.burgerMenuList}>
                 <ul>
                   <li>

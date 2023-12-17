@@ -33,8 +33,15 @@ function TopProduct() {
     setCurrentPage(currentPage + 1);
   };
 
-  const handleClickAddToBag = (productId) => {
-    console.log(`Product id : ${productId}`);
+  const addToLocalStorage = (product) => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...storedCart, product];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const handleClickAddToBag = (product) => {
+    console.log(`Product id : ${product.id}`);
+    addToLocalStorage(product);
   };
 
   return (
@@ -70,7 +77,7 @@ function TopProduct() {
                     <p>{product.title}</p>
                     <p>${product.price}</p>
                   </div>
-                  <button onClick={() => handleClickAddToBag(product.id)}>
+                  <button onClick={() => handleClickAddToBag(product)}>
                     Add to Bag
                   </button>
                 </div>
