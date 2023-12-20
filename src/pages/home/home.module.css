@@ -67,7 +67,6 @@ video {
   padding: 4px 8px;
   cursor: pointer;
   outline: none;
-  margin: 0 10px;
 }
 
 .inactive {
@@ -93,8 +92,15 @@ video {
   text-align: center;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
+
   .controls{
-    right: 10%;
+    right: 50%;
   }
+}
+
+@media only screen and (max-width:690px ) {
+ .carousel{
+  left: 97%;
+ }
 }

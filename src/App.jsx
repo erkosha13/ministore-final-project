@@ -4,6 +4,7 @@ import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import Home from "./pages/home/home";
 import Catalog from "./pages/catalog/catalog";
+import Wishlist from "./pages/wishlist/wishlist";
 import About from "./pages/about/about";
 import Contacts from "./pages/contacts/contacts";
 import Login from "./pages/login/login";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/about/" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/contacts/:productId" element={<Contacts />} />
+        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFound />} />

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getPagination } from "../../../api/api";
 import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
+import { RiHeartAddLine } from "react-icons/ri";
 import styles from "./topproducts.module.css";
 import SkeletonPagination from "./skeletonspaginationhome";
 
@@ -44,6 +45,12 @@ function TopProduct() {
     addToLocalStorage(product);
   };
 
+  const handleClickAddToWishlist = (product) => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const updatedWishlist = [...storedWishlist, product];
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.titleText}>
@@ -77,9 +84,20 @@ function TopProduct() {
                     <p>{product.title}</p>
                     <p>${product.price}</p>
                   </div>
-                  <button onClick={() => handleClickAddToBag(product)}>
-                    Add to Bag
-                  </button>
+                  <div className={styles.cardsbuttons}>
+                    <button
+                      onClick={() => handleClickAddToBag(product)}
+                      className={styles.bag}
+                    >
+                      Add to Bag
+                    </button>
+                    <button
+                      onClick={() => handleClickAddToWishlist(product)}
+                      className={styles.wishlist}
+                    >
+                      <RiHeartAddLine />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

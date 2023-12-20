@@ -23,7 +23,7 @@ function About() {
               diverse needs and preferences of our valued customers.
             </p>
             <p>
-              Mini-Store is more than just a retail space; it's a community of
+              Mini-Store is more than just a retail space; it&rsquo;s a community of
               individuals who appreciate the finer things in life. We invite
               you to explore our store, discover new trends, and join us on a
               journey of style and innovation.

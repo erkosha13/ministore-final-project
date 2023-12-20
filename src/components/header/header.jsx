@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/img/logo.png";
 import { IoPerson } from "react-icons/io5";
-import { RiShoppingCartLine } from "react-icons/ri";
+import { RiShoppingCartLine, RiHeart2Line } from "react-icons/ri";
 import styles from "./header.module.css";
 
 function Header() {
@@ -103,6 +103,11 @@ function Header() {
               <Link to="cart" className={styles.link}>
                 {" "}
                 <RiShoppingCartLine />{" "}
+              </Link>
+            </li>
+            <li>
+              <Link to="wishlist" className={styles.link}>
+                <RiHeart2Line />
               </Link>
             </li>
           </ul>

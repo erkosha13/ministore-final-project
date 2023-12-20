@@ -5,9 +5,10 @@
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin: 30px 20px;
-  padding-top: 50px;
-  /* min-height: calc(100vh - 80px); */
+  padding: 80px 0 ;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .filter {
@@ -147,7 +148,52 @@ button:hover {
   margin-top: 20px;
 }
 
+.cardsbuttons{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cardsbuttons .bag{
+  padding: 7px 50px;
+}
+
+.wishlist{
+  padding: 7px 20px ;
+}
+
+.wishlist svg{
+  width: 20px;
+  height: 20px;
+}
+
+.wishlistAdded {
+  color: red; /* Измени цвет на тот, который тебе нужен */
+}
+
+@media only screen and (max-width:1024px) {
+
+  .filter,
+  .catalog{
+    max-width: 700px;
+    width: 100%;
+  }
+
+
+  .sort {
+    overflow: scroll;
+    max-width: 200px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
+
+  .filter,
+  .catalog{
+    max-width: 550px;
+    width: 100%;
+  }
+
   .sort {
     overflow: scroll;
     max-width: 200px;
@@ -155,8 +201,24 @@ button:hover {
 }
 
 @media only screen and (max-width: 430px) {
+
+  .filter{
+    flex-direction: column-reverse;
+    padding: 10px 0;
+  }
+
+  .catalog{
+    padding: 50px 0;
+  }
+
+  .filter,
+  .catalog{
+    max-width: 425px;
+    width: 100%;
+  }
+
   .sort {
     overflow: scroll;
-    max-width: 100px;
+    max-width: 320px;
   }
 }

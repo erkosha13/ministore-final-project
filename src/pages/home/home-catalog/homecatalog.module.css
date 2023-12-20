@@ -13,7 +13,7 @@ h2 {
   text-align: center;
 }
 
-.card{
+.card {
   display: flex;
   flex-direction: row;
 }
@@ -22,7 +22,7 @@ h2 {
   transition: box-shadow 0.3s ease;
 }
 
-.categoryItem:hover{
+.categoryItem:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
@@ -49,4 +49,11 @@ h2 {
   gap: 30px;
   flex-wrap: wrap;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1024px) {
+  .cards {
+    max-width: 700px;
+    width: 100%;
+  }
 }

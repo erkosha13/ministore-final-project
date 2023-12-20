@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getProducts, getSearch } from "../../api/api";
 import { Input } from "antd";
+import { RiHeartAddLine } from "react-icons/ri";
 import styles from "./catalog.module.css";
 import Skeleton from "./skeleton";
 
@@ -26,6 +27,11 @@ function Catalog() {
     "Miscellaneous",
   ];
 
+  useEffect(() => {
+    const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
+    setProducts(storedProducts.map(product => ({ ...product, inWishlist: false })));
+  }, []);
+
   const showMoreItems = () => {
     setVisible((prevValue) => prevValue + 4);
   };
@@ -34,7 +40,7 @@ function Catalog() {
     try {
       setLoading(true);
       const searchResults = await getSearch(value);
-      setProducts(searchResults);
+      setProducts(searchResults.map(product => ({ ...product, inWishlist: false })));
     } catch (error) {
       console.error("Ошибка при выполнении поиска:", error);
     } finally {
@@ -51,6 +57,27 @@ function Catalog() {
   const handleClickAddToBag = (product) => {
     console.log(`Product id : ${product.id}`);
     addToLocalStorage(product);
+  };
+
+  const handleClickAddToWishlist = (product) => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const isProductInWishlist = storedWishlist.some((item) => item.id === product.id);
+
+    if (isProductInWishlist) {
+      const updatedWishlist = storedWishlist.filter((item) => item.id !== product.id);
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    } else {
+      const updatedWishlist = [...storedWishlist, product];
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    }
+
+    setProducts((prevProducts) =>
+      prevProducts.map((prevProduct) =>
+        prevProduct.id === product.id
+          ? { ...prevProduct, inWishlist: !prevProduct.inWishlist }
+          : prevProduct
+      )
+    );
   };
 
   useEffect(() => {
@@ -121,9 +148,20 @@ function Catalog() {
                   <p>{product.title}</p>
                   <p className={styles.price}>${product.price}</p>
                 </div>
-                <button onClick={() => handleClickAddToBag(product)}>
-                  Add to Bag
-                </button>
+                <div className={styles.cardsbuttons}>
+                  <button
+                    onClick={() => handleClickAddToBag(product)}
+                    className={styles.bag}
+                  >
+                    Add to Bag
+                  </button>
+                  <button
+                    onClick={() => handleClickAddToWishlist(product)}
+                    className={`${styles.wishlist} ${product.inWishlist ? styles.wishlistAdded : ""}`}
+                  >
+                    <RiHeartAddLine />
+                  </button>
+                </div>
               </div>
             ))}
             <div className={styles.load}>

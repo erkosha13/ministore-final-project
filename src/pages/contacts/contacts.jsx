@@ -1,4 +1,4 @@
-import styles from './contacts.module.css';
+import styles from "./contacts.module.css";
 import Imgphoto2 from "../../assets/img/about3.jpg";
 import { IoLogoLinkedin, IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
 
@@ -27,11 +27,13 @@ function Contacts() {
               </h1>
             </div>
             <div className={styles.textCard}>
-              <p>4400 4302  4494 2535</p>
+              <p>4400 4302 4494 2535</p>
             </div>
           </div>
         </div>
-        <img src={Imgphoto2} alt="AboutPhoto"></img>
+        <div className={styles.imgContact}>
+          <img src={Imgphoto2} alt="AboutPhoto"></img>
+        </div>
       </div>
     </div>
   );

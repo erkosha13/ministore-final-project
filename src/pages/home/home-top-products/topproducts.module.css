@@ -57,7 +57,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
 }
 
-.wrapper button svg {
+.wrapper .buttons svg {
   width: 35px;
   height: 35px;
   color: #575757;
@@ -70,11 +70,29 @@
 
 .cards button {
   background-color: #d3d3d37c;
-  padding: 7px 60px;
   border-radius: none;
 }
 
-@media only screen and (max-width: 768px) {
+.cardsbuttons{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cardsbuttons .bag{
+  padding: 7px 47px;
+}
+
+.wishlist{
+  padding: 7px 20px ;
+}
+
+.wishlist svg{
+  width: 20px;
+  height: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
   .titleText{
     margin: 0 50px;
   }
