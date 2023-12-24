@@ -119,3 +119,20 @@ button:hover {
   display: flex;
   justify-content: end;
 }
+
+@media only screen and (max-width: 650px) {
+  .cartItem{
+    flex-direction: column;
+  }
+
+  .textCart{
+    width: 230px;
+    margin-bottom: 10px;
+  }
+
+  .result{
+    justify-content: center;
+    margin-top: 50px;
+    max-width: 100px;
+  }
+}
