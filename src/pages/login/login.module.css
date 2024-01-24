@@ -13,23 +13,31 @@
   margin: 10px 0;
 }
 
+.loginInput input{
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #69696974;
+  color: whitesmoke;
+}
+
 .loginButton{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 22px;
 }
-.wrapper button,
-.loginButton a {
+.loginButton button {
   background-color: #d3d3d3de;
   color: black;
-  padding: 4px 16px;
   border-radius: 10px;
 }
 
-.loginButton a{
-  background-color: transparent;
+.loginButton button:hover {
+  background-color: #575757;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
 }
 
 .error{

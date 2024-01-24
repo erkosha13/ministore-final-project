@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "./profile.module.css";
 
-export const Profile = () => {
+const Profile = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {

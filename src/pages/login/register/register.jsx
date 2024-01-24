@@ -2,11 +2,12 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "./register.module.css";
 
-export const Register = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,20 +23,26 @@ export const Register = () => {
         }
       );
 
+      console.log("Server Response:", response.data);
+
       // Сохранение токенов в локальное хранилище
       localStorage.setItem("access_token", response.data.access_token);
       localStorage.setItem("refresh_token", response.data.refresh_token);
 
       // Переход на страницу профиля после успешной регистрации
-      window.location.href = "/profile";
+      window.location.href = "/login";
     } catch (error) {
-      console.error("Error creating user:", error);
-      // Обработка ошибок регистрации
+      if (error.response.status === 400) {
+        setError("Fill in the input fields");
+      } else {
+        console.error("Error creating user:", error);
+      }
     }
   };
 
   return (
     <div className={styles.wrapper}>
+      {error && <div className={styles.error}>{error}</div>}
       <h1>Registration</h1>
       <form onSubmit={handleSubmit} className={styles.registerForm}>
         <input

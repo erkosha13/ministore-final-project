@@ -14,11 +14,29 @@
 }
 
 .registerForm input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #69696974;
+  color: whitesmoke;
   margin-bottom: 10px;
 }
 
 .registerForm button {
+  display: flex;
+  justify-content: center;
   background-color: #d3d3d3de;
-  padding: 4px 16px;
+  color: black;
+  padding: 7px 16px;
   border-radius: 10px;
+}
+
+.registerForm button:hover {
+  background-color: #575757;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.041);
+}
+
+.error{
+  color: white;
 }

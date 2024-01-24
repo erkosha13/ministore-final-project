@@ -4,25 +4,36 @@ import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
 import { RiHeartAddLine } from "react-icons/ri";
 import styles from "./topproducts.module.css";
 import SkeletonPagination from "./skeletonspaginationhome";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function TopProduct() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("access_token");
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await getPagination(currentPage);
-        setProducts(response);
+        const updatedProducts = response.map((product) => {
+          const isInWishlist = JSON.parse(localStorage.getItem("wishlist"))?.some(
+            (wishlistItem) => wishlistItem.id === product.id
+          );
+          return { ...product, inWishlist: isInWishlist };
+        });
+        setProducts(updatedProducts);
       } catch (error) {
-        console.error("Error:", error);
+        console.error("Ошибка:", error);
       } finally {
         setLoading(false);
       }
     };
+
     fetchProducts();
-  }, [currentPage]);
+  }, [currentPage, location]); // <-- Управление зависимостями
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
@@ -41,20 +52,36 @@ function TopProduct() {
   };
 
   const handleClickAddToBag = (product) => {
-    console.log(`Product id : ${product.id}`);
-    addToLocalStorage(product);
+    if (isAuthenticated) {
+      addToLocalStorage(product);
+    } else {
+      navigate("/login");
+    }
   };
 
   const handleClickAddToWishlist = (product) => {
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const updatedWishlist = [...storedWishlist, product];
-    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    if (isAuthenticated) {
+      const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const updatedWishlist = [...storedWishlist, product];
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+
+      // Предполагается, что product.id уникален
+      setProducts((prevProducts) =>
+        prevProducts.map((prevProduct) =>
+          prevProduct.id === product.id
+            ? { ...prevProduct, inWishlist: true }
+            : prevProduct
+        )
+      );
+    } else {
+      navigate("/login");
+    }
   };
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.titleText}>
-        <h1>Top Products</h1>
+        <h2>Top Products</h2>
         <div className={styles.buttons}>
           <button
             onClick={handlePrevPage}
@@ -93,7 +120,9 @@ function TopProduct() {
                     </button>
                     <button
                       onClick={() => handleClickAddToWishlist(product)}
-                      className={styles.wishlist}
+                      className={`${styles.wishlist} ${
+                        product.inWishlist ? styles.wishlistAdded : ""
+                      }`}
                     >
                       <RiHeartAddLine />
                     </button>

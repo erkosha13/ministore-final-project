@@ -1,4 +1,4 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getProducts, getSearch } from "../../api/api";
 import { Input } from "antd";
@@ -29,7 +29,13 @@ function Catalog() {
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem("products")) || [];
-    setProducts(storedProducts.map(product => ({ ...product, inWishlist: false })));
+    const updatedProducts = storedProducts.map((product) => {
+      const isInWishlist = JSON.parse(localStorage.getItem("wishlist"))?.some(
+        (wishlistItem) => wishlistItem.id === product.id
+      );
+      return { ...product, inWishlist: isInWishlist };
+    });
+    setProducts(updatedProducts);
   }, []);
 
   const showMoreItems = () => {
@@ -40,7 +46,9 @@ function Catalog() {
     try {
       setLoading(true);
       const searchResults = await getSearch(value);
-      setProducts(searchResults.map(product => ({ ...product, inWishlist: false })));
+      setProducts(
+        searchResults.map((product) => ({ ...product, inWishlist: false }))
+      );
     } catch (error) {
       console.error("Ошибка при выполнении поиска:", error);
     } finally {
@@ -55,29 +63,52 @@ function Catalog() {
   };
 
   const handleClickAddToBag = (product) => {
-    console.log(`Product id : ${product.id}`);
+    const accessToken = localStorage.getItem("access_token");
+
+    if (!accessToken) {
+      navigate("/login");
+      return;
+    }
+
     addToLocalStorage(product);
   };
 
-  const handleClickAddToWishlist = (product) => {
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const isProductInWishlist = storedWishlist.some((item) => item.id === product.id);
+  const handleClickAddToWishlist = async (product) => {
+    const accessToken = localStorage.getItem("access_token");
 
-    if (isProductInWishlist) {
-      const updatedWishlist = storedWishlist.filter((item) => item.id !== product.id);
-      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-    } else {
-      const updatedWishlist = [...storedWishlist, product];
-      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    if (!accessToken) {
+      navigate("/login");
+      return;
     }
 
-    setProducts((prevProducts) =>
-      prevProducts.map((prevProduct) =>
-        prevProduct.id === product.id
-          ? { ...prevProduct, inWishlist: !prevProduct.inWishlist }
-          : prevProduct
-      )
-    );
+    try {
+      const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const isProductInWishlist = storedWishlist.some(
+        (item) => item.id === product.id
+      );
+
+      let updatedWishlist;
+
+      if (isProductInWishlist) {
+        updatedWishlist = storedWishlist.filter(
+          (item) => item.id !== product.id
+        );
+      } else {
+        updatedWishlist = [...storedWishlist, product];
+      }
+
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+
+      setProducts((prevProducts) =>
+        prevProducts.map((prevProduct) =>
+          prevProduct.id === product.id
+            ? { ...prevProduct, inWishlist: !prevProduct.inWishlist }
+            : prevProduct
+        )
+      );
+    } catch (error) {
+      console.error("Ошибка при обновлении Wishlist:", error);
+    }
   };
 
   useEffect(() => {
@@ -87,10 +118,24 @@ function Catalog() {
 
         if (selectedCategory !== null && selectedCategory !== undefined) {
           const categoryIdToFetch = selectedCategory;
-          setProducts(await getProducts(categoryIdToFetch));
+          const fetchedProducts = await getProducts(categoryIdToFetch);
+          const updatedProducts = fetchedProducts.map((product) => {
+            const isInWishlist = JSON.parse(
+              localStorage.getItem("wishlist")
+            )?.some((wishlistItem) => wishlistItem.id === product.id);
+            return { ...product, inWishlist: isInWishlist };
+          });
+          setProducts(updatedProducts);
         } else {
           const searchTerm = new URLSearchParams(location.search).get("title");
-          setProducts(await getSearch(searchTerm));
+          const searchResults = await getSearch(searchTerm);
+          const updatedProducts = searchResults.map((product) => {
+            const isInWishlist = JSON.parse(
+              localStorage.getItem("wishlist")
+            )?.some((wishlistItem) => wishlistItem.id === product.id);
+            return { ...product, inWishlist: isInWishlist };
+          });
+          setProducts(updatedProducts);
         }
       } catch (error) {
         console.error("Ошибка:", error);
@@ -157,7 +202,9 @@ function Catalog() {
                   </button>
                   <button
                     onClick={() => handleClickAddToWishlist(product)}
-                    className={`${styles.wishlist} ${product.inWishlist ? styles.wishlistAdded : ""}`}
+                    className={`${styles.wishlist} ${
+                      product.inWishlist ? styles.wishlistAdded : ""
+                    }`}
                   >
                     <RiHeartAddLine />
                   </button>

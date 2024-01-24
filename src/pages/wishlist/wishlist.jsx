@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { RiHeartAddLine } from "react-icons/ri";
-import styles from "../catalog/catalog.module.css";
+import styles from "./wishlist.module.css";
 
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
@@ -43,7 +43,11 @@ function Wishlist() {
               </button>
               <button
                 onClick={() => handleClickRemoveFromWishlist(product)}
-                className={`${styles.wishlist} ${styles.wishlistAdded}`}
+                className={`${styles.wishlist} ${
+                  wishlist.some((item) => item.id === product.id)
+                    ? styles.wishlistAdded
+                    : ""
+                }`}
               >
                 <RiHeartAddLine />
               </button>

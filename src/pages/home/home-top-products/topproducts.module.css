@@ -14,7 +14,7 @@
   color: #d3d3d3;
 }
 
-.titleText h1 {
+.titleText h2 {
   font-size: 30px;
 }
 
@@ -99,6 +99,10 @@
 .wishlist svg {
   width: 20px;
   height: 20px;
+}
+
+.wishlistAdded {
+  color: red; /* Измени цвет на тот, который тебе нужен */
 }
 
 @media only screen and (max-width: 1024px) {

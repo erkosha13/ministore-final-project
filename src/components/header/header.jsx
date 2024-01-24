@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/img/logo.png";
 import { IoPerson } from "react-icons/io5";
 import { RiShoppingCartLine, RiHeart2Line } from "react-icons/ri";
+import { MdLogin } from "react-icons/md";
 import styles from "./header.module.css";
 
 function Header() {
@@ -96,12 +97,6 @@ function Header() {
         <div className={styles.search}>
           <ul>
             <li>
-              <Link to="/login" className={styles.link}>
-                {" "}
-                <IoPerson />
-              </Link>
-            </li>
-            <li>
               <Link to="cart" className={styles.link}>
                 {" "}
                 <RiShoppingCartLine />{" "}
@@ -110,6 +105,18 @@ function Header() {
             <li>
               <Link to="wishlist" className={styles.link}>
                 <RiHeart2Line />
+              </Link>
+            </li>
+            <li>
+              <Link to="/profile" className={styles.link}>
+                {" "}
+                <IoPerson />
+              </Link>
+            </li>
+            <li>
+              <Link to='/login' className={styles.link}>
+                {""}
+                <MdLogin />
               </Link>
             </li>
           </ul>

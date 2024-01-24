@@ -8,11 +8,11 @@ function HomeAbout() {
           <h1>Relaxed elegance</h1>
         </div>
         <div className={styles.subtitle}>
-          Clothes inspired by classic movies that are our brand’s endless source
+          <p>Clothes inspired by classic movies that are our brand’s endless source
           of inspiration. Perfectly fitting and highlighting your best features
           – while elegantly hiding the shortcomings. Enjoy our body-friendly
           fabrics and communicate a well thought-out, elegant image of a relaxed
-          lifestyle and refinement.
+          lifestyle and refinement.</p>
         </div>
       </div>
     </div>
