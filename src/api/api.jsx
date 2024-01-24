@@ -49,3 +49,15 @@ export const getSearch = async (searchTerm) => {
     throw error;
   }
 };
+
+export const getUsers = async() =>{
+  try{
+    const response = await axios.get(
+      `https://api.escuelajs.co/api/v1/users`
+    );
+    return response.data;
+  } catch (error){
+    console.log("Error:", error);
+    throw error;
+  }
+}

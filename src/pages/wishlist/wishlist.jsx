@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { RiHeartAddLine } from "react-icons/ri";
-import styles from "../catalog/catalog.module.css"; // Импортируем стили из компонента Catalog
+import styles from "../catalog/catalog.module.css";
 
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);

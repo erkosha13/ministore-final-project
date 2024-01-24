@@ -65,7 +65,9 @@ function Header() {
           </div>
         )}
         <div className={styles.logo}>
-          <img src={Logo} alt="logo" />
+          <Link to="/" className={styles.link}>
+            <img src={Logo} alt="logo" />
+          </Link>
         </div>
         <div className={`${styles.nav} ${isMenuActive ? styles.active : ""}`}>
           <ul>

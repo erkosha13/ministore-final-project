@@ -1,0 +1,24 @@
+.wrapper{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 95px;
+  min-height: calc(72vh - 80px);
+}
+
+.registerForm{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.registerForm input {
+  margin-bottom: 10px;
+}
+
+.registerForm button {
+  background-color: #d3d3d3de;
+  padding: 4px 16px;
+  border-radius: 10px;
+}

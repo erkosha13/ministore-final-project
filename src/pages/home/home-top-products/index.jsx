@@ -81,7 +81,7 @@ function TopProduct() {
                 </div>
                 <div className={styles.info}>
                   <div className={styles.text}>
-                    <p>{product.title}</p>
+                    <p className={styles.title}>{product.title}</p>
                     <p>${product.price}</p>
                   </div>
                   <div className={styles.cardsbuttons}>

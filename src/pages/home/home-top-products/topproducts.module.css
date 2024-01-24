@@ -38,6 +38,15 @@
   height: 100%;
 }
 
+.text {
+  width: 200px;
+  word-wrap: break-word;
+}
+
+.text .title {
+  height: 40px;
+}
+
 .buttons {
   display: flex;
 }
@@ -73,27 +82,27 @@
   border-radius: none;
 }
 
-.cardsbuttons{
+.cardsbuttons {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
-.cardsbuttons .bag{
+.cardsbuttons .bag {
   padding: 7px 47px;
 }
 
-.wishlist{
-  padding: 7px 20px ;
+.wishlist {
+  padding: 7px 20px;
 }
 
-.wishlist svg{
+.wishlist svg {
   width: 20px;
   height: 20px;
 }
 
 @media only screen and (max-width: 1024px) {
-  .titleText{
+  .titleText {
     margin: 0 50px;
   }
 }

@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 95px;
+  min-height: calc(72vh - 80px);
+}
+
+.data{
+  display: flex;
+  flex-direction: column;
+}
+
+.data img {
+  max-width: 250px;
+  height: 250px;
+  margin-bottom: 25px;
+}
+
+.dataText{
+  margin-bottom: 25px;
+}
+
+.data button {
+  background-color: #d3d3d3de;
+  padding: 4px 16px;
+}

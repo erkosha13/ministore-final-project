@@ -1,10 +1,38 @@
 .wrapper{
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   margin: 95px;
   min-height: calc(72vh - 80px);
-  background-color: aliceblue;
 }
 
+.loginInput{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.loginButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.wrapper button,
+.loginButton a {
+  background-color: #d3d3d3de;
+  color: black;
+  padding: 4px 16px;
+  border-radius: 10px;
+}
+
+.loginButton a{
+  background-color: transparent;
+}
+
+.error{
+  color: white;
+}
 
